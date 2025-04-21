@@ -1,0 +1,40 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+    background-color: #fff;
+    height: 90px;
+    box-shadow: 0px 1px 12px -12px #000;
+    color: #444444;
+
+    &__logo{
+        svg {
+            width: auto;
+            max-height: 80px;
+
+            &.swapfiets {
+                max-width: 120px;
+            }
+
+            &.bike-index {
+                max-width: 80px;
+            }
+
+            @media screen and (max-width: 640px) {
+                &.swapfiets {
+                    width: 90px;
+                }
+
+
+                &.bike-index {
+                    width: 60px;
+                }
+            }
+
+            @media screen and (max-width: 580px) {
+                display: none;
+            }
+        }
+    }
+}

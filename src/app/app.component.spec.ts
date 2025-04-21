@@ -1,29 +1,61 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { LoadingService } from './services/loading.service';
+import { BehaviorSubject, of } from 'rxjs';
+import { HeaderComponent } from './components/header/header.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { By } from '@angular/platform-browser';
+
+const mockActivatedRoute = {
+    snapshot: { paramMap: { get: (key: string) => 'mockedValue' } },
+    queryParams: of({}),
+    params: of({}),
+};
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AppComponent],
-    }).compileComponents();
-  });
+    let component: AppComponent;
+    let fixture: ComponentFixture<AppComponent>;
+    let loading$: LoadingService;
+    let loadingState: BehaviorSubject<boolean>;
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+    beforeEach(async () => {
+        loadingState = new BehaviorSubject<boolean>(false);
 
-  it(`should have the 'swapfiets' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('swapfiets');
-  });
+        await TestBed.configureTestingModule({
+            imports: [MatProgressBarModule, CommonModule, RouterOutlet, AppComponent, HeaderComponent],
+            providers: [
+                {
+                    provide: LoadingService,
+                    useValue: { loadingState: loadingState.asObservable()  }
+                },
+                { provide: ActivatedRoute, useValue: mockActivatedRoute }
+            ]
+        }).compileComponents();
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, swapfiets');
-  });
+        fixture = TestBed.createComponent(AppComponent);
+        component = fixture.componentInstance;
+        loading$ = TestBed.inject(LoadingService);
+
+        fixture.detectChanges();
+    });
+
+    it('should create the app', () => {
+        expect(component).toBeTruthy();
+    });
+
+    it('should not show progress bar when not loading', () => {
+        loadingState.next(false);
+        fixture.detectChanges();
+
+        const progressBar = fixture.debugElement.query(By.css('mat-progress-bar'));
+        expect(progressBar).toBeFalsy();
+    });
+
+    it('should render header component', () => {
+        const headerElement = fixture.debugElement.query(By.directive(HeaderComponent));
+        expect(headerElement).toBeTruthy();
+    });
+
 });

@@ -1,0 +1,30 @@
+<section class="home">
+    <h1 class="home-title">Search</h1>
+    <p class="home-subtitle">Find bikes by city.</p>
+
+    <app-search (bikeList)="loadBikeList($event)"></app-search>
+
+    @defer(when bikes) {
+        <ul class="home-bikes" role="list">
+            @for (bike of bikes; track bike.id) {
+                <li>
+                    <app-bike-item [bike]="bike"></app-bike-item>
+                </li>
+            }
+        </ul>
+    } @placeholder {
+        @if (isFetching){
+            <app-content-placeholder [type]="'bike-card'" [count]="9"></app-content-placeholder>
+        }
+    }
+
+    @if (this.isResultEmpty) {
+        <div class="home-empty-search">
+            <div class="empty-search-header">
+                <mat-icon>wrong_location</mat-icon>
+                <h3>No Bikes found for this city</h3>
+            </div>
+            <h5>Please Choose another location</h5>
+        </div>
+    }
+</section>

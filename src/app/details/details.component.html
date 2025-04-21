@@ -1,0 +1,12 @@
+<section class="details">
+    @defer (when bikeDetail) {
+        <h1 class="details-title">{{ bikeDetail.title }}</h1>
+        <p class="details-subtitle">
+            <b>Stolen</b> {{reportedDate * 1000 | date: 'longDate' }}
+            <b>from</b> {{ bikeDetail.stolen_record?.location || 'Unknown location'}}</p>
+
+        <app-bike-details [bike]="bikeDetail" ></app-bike-details>
+    } @placeholder {
+        <app-content-placeholder [type]="'details'"></app-content-placeholder>
+    }
+</section>

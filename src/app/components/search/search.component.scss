@@ -1,0 +1,36 @@
+.search {
+    .mdc-text-field--outlined {
+        --mdc-outlined-text-field-container-shape: 308px !important;
+    }
+
+    margin-top: 20px;
+
+    .mdc-line-ripple {
+        display: none;
+    }
+
+    .search-form {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+
+        @media screen and (max-width: 480px) {
+            flex-direction: column;
+
+            .filter-input {
+                width: 100%;
+            }
+
+        }
+    }
+
+    .search-input {
+        max-width: 760px;
+        width: 100%;
+
+        input {
+            font-size: 1.2rem;
+        }
+    }
+}
+

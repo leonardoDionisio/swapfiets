@@ -1,0 +1,24 @@
+<div class="search">
+    <form [formGroup]="searchCtrl" (submit)="onSubmit($event)" class="search-form">
+        <mat-form-field appearance="fill" class="search-input">
+            <mat-label>City</mat-label>
+            <input matInput placeholder="Ex. Amsterdam" [matAutocomplete]="auto" formControlName="city">
+        </mat-form-field>
+
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="getBikes()">
+            @for (option of filteredOptions | async; track option) {
+                <mat-option [value]="option">{{option}}</mat-option>
+              }
+        </mat-autocomplete>
+
+        <mat-form-field class="filter-input">
+            <mat-label>Items per page</mat-label>
+
+            <mat-select (selectionChange)="getBikes()" formControlName="per_page">
+                @for (page of pages; track page) {
+                    <mat-option [value]="page">{{page}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+    </form>
+</div>

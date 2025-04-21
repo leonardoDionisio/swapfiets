@@ -1,0 +1,106 @@
+.placeholder-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+    gap: 38px;
+    max-width: 1470px;
+    margin: 0 auto;
+
+    .bike {
+        flex: 1;
+        width: 100%;
+        max-width: 470px;
+        height: 630px;
+        background-color: #fff;
+        border-radius: 24px;
+        padding: 30px 20px 40px 20px;
+        text-align: center;
+        box-shadow: 0px 3px 33px -29px #000;
+
+        .bike-badge {
+            width: 235px;
+            height: 35px;
+            margin: 0 auto 10px auto;
+            padding: 8px 11px;
+            color: #4c4b4b;
+        }
+
+        .bike-title {
+            margin-top: 10px;
+            width: 300px;
+            height: 26px;
+            margin: 0px auto 10px auto;
+        }
+
+        .bike-image {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 10px auto;
+        }
+
+        .bike-details {
+            margin: 30px auto 0px auto;
+            width: 300px;
+            height: 57px;
+            padding: 17px;
+        }
+    }
+
+    .details {
+        width: 100%;
+        padding-top: 2rem;
+        height: 1200px;
+
+        .details-title {
+            height: 47px;
+            width: 530px;
+        }
+
+        .details-subtitle {
+            height: 30px;
+            width: 250px;
+            margin-top: 10px;
+        }
+
+        .details-image-description {
+            display: flex;
+            margin-top: 10px;
+            gap: 60px;
+
+            .details-image {
+                width: 666px;
+                height: 412px;
+            }
+
+            .details-description {
+                width: 678px;
+                height: 412px;
+            }
+        }
+
+        .details-map {
+            margin-top: 40px;
+            width: 100%;
+            height: 500px;
+        }
+
+    }
+
+    .bike-badge,.bike-title,
+    .bike-image, .bike-details,
+    .details-title, .details-subtitle, .details-image,
+    .details-description, .details-map {
+        background-color: #EFF0F3;
+        animation: pulse 1.5s infinite ease-in-out;
+        border-radius: 4px;
+    }
+}
+
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}

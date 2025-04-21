@@ -1,0 +1,31 @@
+<article class="placeholder-container">
+    @for (i of this.countArray; track $index) {
+        @switch (type) {
+            @case ('bike-card') {
+                <div class="bike">
+                    <div class="bike-badge"></div>
+                    <h2 class="bike-title"></h2>
+                    <div class="bike-image"></div>
+                    <div class="bike-badge"></div>
+                    <div class="bike-badge"></div>
+                    <div class="bike-details"></div>
+                </div>
+            }
+
+            @case ('details') {
+                <div class="details">
+                    <div class="details-title"></div>
+                    <div class="details-subtitle"></div>
+
+                    <div class="details-image-description">
+                        <div class="details-image"></div>
+                        <div class="details-description"></div>
+                    </div>
+
+                    <div class="details-map"></div>
+                </div>
+            }
+        }
+    }
+</article>
+

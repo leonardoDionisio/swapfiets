@@ -1,0 +1,30 @@
+
+<article class="bike">
+    <span class="bike-badge reported">
+        Reported on
+        <b>{{reportedDate * 1000 | date: 'longDate'}}</b>
+    </span>
+
+    <h2 class="bike-title">{{bike.title}}</h2>
+
+    @if (bike.thumb) {
+        <img class="bike-thumb" [src]="bike.thumb" [alt]="bike.title || 'Bike image'"/>
+    } @else {
+        <svg class="bike-placeholder">
+            <use xlink:href="assets/placeholder-bike.svg#placeholder" fill="#00A8E0"></use>
+        </svg>
+    }
+
+    <span class="bike-badge">
+        {{bike.stolen_location}}
+    </span>
+
+    <span class="bike-badge">
+        {{bike.frame_colors || 'Unkown'}}
+    </span>
+
+    <a class="bike-details" [routerLink]="['/details', bike.id]">
+        More details
+    </a>
+
+</article>

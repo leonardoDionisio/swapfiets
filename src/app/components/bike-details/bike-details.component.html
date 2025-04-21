@@ -1,0 +1,93 @@
+<article class="bike-details">
+    @if (this.mainImage) {
+        <div class="details-galery">
+            <div class="details-image-container">
+                <img class="details-main-image" [src]="this.mainImage" [alt]="bike.title" aria-label="Main image of the stolen bike">
+            </div>
+
+            @if (bike.public_images.length) {
+                <ul class="details-carousel">
+                    @for (bike of bike.public_images; track $index) {
+                        <li [ngClass]="{'selected': this.selectedImageIndex === $index}" (click)="setMainImage(bike.large, $index)">
+                            <img class="details-public-image" [src]="bike.thumb" [alt]="bike.name">
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+    }
+
+    <div class="details-description">
+        <h3 class="description-title">Bike Details</h3>
+        <div class="description-details">
+            <div class="detail-item">
+                <p class="detail-title"><b>Serial Number:</b></p>
+                <p class="detail-desc">{{bike.serial || 'Unkown'}}</p>
+            </div>
+
+            <div class="detail-item">
+                <p class="detail-title"><b>Frame model:</b></p>
+                <p class="detail-desc">{{bike.frame_model || 'Unkown'}}</p>
+            </div>
+
+            <div class="detail-item">
+                <p class="detail-title"><b>Frame material:</b></p>
+                <p class="detail-desc">{{bike.frame_material_slug || 'Unkown'}}</p>
+            </div>
+
+            <div class="detail-item">
+                <p class="detail-title"><b>Primary Colors:</b></p>
+                <p class="detail-desc">{{bike.frame_colors || 'Unkown'}}</p>
+            </div>
+
+            <div class="detail-item">
+                <p class="detail-title"><b>Manufacturer:</b></p>
+                <p class="detail-desc">{{bike.manufacturer_name || 'Unkown'}}</p>
+            </div>
+        </div>
+
+        <div class="description-theft-details">
+            <h3 class="description-title">Theft Details</h3>
+
+            <div class="description-details">
+                <div class="detail-item">
+                    <p class="detail-title"><b>Police report:</b></p>
+                    <p class="detail-desc">{{bike.stolen_record?.police_report_number || 'Unkown'}}</p>
+                </div>
+
+                <div class="detail-item">
+                    <p class="detail-title"><b>Police department:</b></p>
+                    <p class="detail-desc">{{bike.stolen_record?.police_report_department || 'Unkown'}}</p>
+                </div>
+
+                <div class="detail-item">
+                    <p class="detail-title"><b>Location:</b></p>
+                    <p class="detail-desc">{{bike.stolen_record?.location || 'Unkown'}}</p>
+                </div>
+
+                <div class="detail-item">
+                    <p class="detail-title"><b>Locking description:</b></p>
+                    <p class="detail-desc">{{bike.stolen_record?.locking_description || 'Unkown'}}</p>
+                </div>
+
+                <div class="detail-item">
+                    <p class="detail-title"><b>Locking circumvented:</b></p>
+                    <p class="detail-desc">{{bike.stolen_record?.lock_defeat_description || 'Unkown'}}</p>
+                </div>
+
+                <div class="detail-item theft-description">
+                    <p class="detail-title"><b>Theft Description:</b></p>
+                    <p class="detail-desc">{{bike.stolen_record?.theft_description || 'Unkown'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+
+<div class="description-map">
+    <h3 class="description-title">Map</h3>
+    @if (this.center) {
+        <app-bike-map [center]="this.center"></app-bike-map>
+    }
+</div>
+

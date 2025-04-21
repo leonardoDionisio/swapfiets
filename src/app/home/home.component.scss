@@ -1,0 +1,68 @@
+.home {
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    padding: 3rem;
+    gap: 5px;
+
+    .home-title {
+        font-size: 3rem;
+        margin: 0;
+        text-align: center;
+        color: #444444;
+    }
+
+    .home-subtitle {
+        font-size: 1.2rem;
+        margin: 0;
+        text-align: center;
+        color: #444444;
+    }
+
+    .home-bikes {
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 38px;
+        justify-content: space-between;
+        max-width: 1470px;
+        width: 100%;
+        margin: 0 auto;
+
+        li {
+            flex: 1;
+            width: 100%;
+            max-width: 470px;
+        }
+    }
+
+    .home-empty-search {
+        display: flex;
+        flex-direction: column;
+        max-width: 760px;
+        min-height: 230px;
+        border-radius: 20px;
+        border: 2px dashed #d7d6d6;
+        border-spacing: 71px;
+        align-items: center;
+        margin: 0 auto;
+        justify-content: center;
+        width: 100%;
+
+        h3 {
+            margin: 0;
+            color: #444444;
+        }
+
+        .empty-search-header {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        h5 {
+            margin-top: 5px;
+            color: #444444;
+        }
+    }
+}

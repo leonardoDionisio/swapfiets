@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    background-color: #F2F3F5;
+
+    @media screen and (max-width: 1150px) {
+        font-size: 85%;
+    }
+
+    @media screen and (max-width: 390px) {
+        font-size: 75%;
+    }
+}
+
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+
+    --mdc-filled-text-field-active-indicator-height: 0;
+    --mdc-filled-text-field-focus-active-indicator-height: 0;
+    --mdc-filled-text-field-container-color: #fff;
+
+    // --mdc-filled-text-field-container-color;
+
+    .mdc-text-field--filled {
+        border-radius: 15px;
+        border: 1px solid #ebe3e3;
+    }
+}

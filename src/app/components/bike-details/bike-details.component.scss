@@ -1,0 +1,97 @@
+.bike-details {
+    display: flex;
+    gap: 60px;
+
+    @media screen and (max-width: 1200px) {
+        flex-direction: column;
+    }
+
+    .details-galery {
+        display: flex;
+        gap: 12px;
+        flex-direction: column;
+
+        .details-image-container {
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            width: 730px;
+
+            @media screen and (max-width: 1200px) {
+                width: 100%;
+            }
+        }
+
+        .details-main-image {
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .details-carousel {
+        max-width: 730px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 6px;
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        li {
+            display: flex;
+            cursor: pointer;
+            border: 2px solid #fff;
+            border-radius: 5px;
+
+            &.selected {
+                border: 2px solid #00A8E0
+            }
+        }
+    }
+
+    .details-public-image {
+        width: auto;
+        max-height: 100px;
+    }
+
+    .details-description {
+
+        .description-details {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            color: #444444;
+
+            .detail-item {
+                display: flex;
+                gap: 10px;
+
+                &.theft-description {
+                    flex-direction: column;
+                }
+
+                p {
+                    margin: 0;
+                }
+
+                b {
+                    color: #3f3f3f;
+                }
+            }
+
+        }
+
+        .description-theft-details {
+            margin-top: 40px;
+        }
+
+        .description-title {
+            margin-top: 0;
+            color: #444444;
+        }
+    }
+}
+
+.description-map {
+    color: #444444;
+}
